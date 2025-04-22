@@ -4,6 +4,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import { SidebarMenu } from "./components/SidebarMenu";
 import { TopBar } from "./components/TopBar";
+import { PageTransition } from "./components/PageTransition";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -42,7 +43,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
             {/* Page content */}
             <main className="flex-1 overflow-y-auto bg-[#F5F7FA]">
-              {children}
+              <PageTransition>{children}</PageTransition>
             </main>
           </div>
         </div>
