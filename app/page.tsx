@@ -23,30 +23,28 @@ import CreditCards from "./components/CreditCards";
 import moment from "moment";
 import { formatAmount } from "@/lib/utils";
 import Preloader from "./components/Preloader";
+import {
+  CreditCardProps,
+  IBalanceData,
+  IExpense,
+  IPerson,
+  ITransaction,
+  IWeeklyData,
+} from "@/lib/interfaces";
 
-type ITransaction = {
-  id: string;
-  title: string;
-  amount: number;
-  date: string;
-  type: string;
-  source: string;
-};
-
-type IPerson = {
-  name: string;
-  title: string;
-  image: string;
-};
-
-type IExpense = {
-  name: string;
-  value: number;
-  color: string;
+type DashboardData = {
+  weeklyData: IWeeklyData[];
+  expenseData: IExpense[];
+  balanceData: IBalanceData[];
+  transactionsData: ITransaction[];
+  peopleData: IPerson[];
+  cardsData: CreditCardProps[];
 };
 
 export default function Dashboard() {
-  const [dashboardData, setDashboardData] = useState<any>(null);
+  const [dashboardData, setDashboardData] = useState<DashboardData | null>(
+    null
+  );
   const [isLoading, setIsLoading] = useState(true);
 
   const getDashboardData = async () => {
@@ -109,7 +107,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="bg-gray-50 p-4 lg:p-6 pb-10 min-h-screen">
+    <div className="p-4 lg:p-10 min-h-screen">
       {/* Cards and Recent Transactions */}
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-8">
         {/* My Cards */}
@@ -364,11 +362,7 @@ export default function Dashboard() {
                   placeholder="525.50"
                   value={amount}
                   onChange={(e) => setAmount(Number(e.target.value))}
-                  className="border-none w-[100px] lg:w-[120px] text-[#718EBF] font-light text-sm placeholder:text-[#718EBF] shadow-none"
-                  style={{
-                    outline: "none",
-                    boxShadow: "none",
-                  }}
+                  className="border-none w-[100px] lg:w-[120px]"
                 />
                 <button
                   className="bg-black text-white px-6 py-2 cursor-pointer rounded-full flex items-center hover:bg-[#718EBF]"
