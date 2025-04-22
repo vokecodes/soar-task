@@ -1,17 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import { formatAmount } from "@/lib/utils";
+import { CreditCardProps } from "@/lib/interfaces";
 
-type ICard = {
-  id: string;
-  balance: number;
-  cardHolder: string;
-  valid: string;
-  cardNumber: string;
-  type: string;
-};
-
-export default function CreditCards({ cards }: { cards: ICard[] }) {
+export default function CreditCards({ cards }: { cards: CreditCardProps[] }) {
   return (
     <div className="flex space-x-4 overflow-x-auto scrollbar-hide">
       {cards.length > 0 &&

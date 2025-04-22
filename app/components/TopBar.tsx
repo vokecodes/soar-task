@@ -40,7 +40,7 @@ export function TopBar() {
         </h1>
 
         <Avatar className="w-[35px] h-[35px]">
-          <AvatarImage src="/ceo.png" alt="User" />
+          <AvatarImage src="/profile.svg" alt="User" />
           <AvatarFallback>CR</AvatarFallback>
         </Avatar>
       </div>
