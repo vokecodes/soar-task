@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -23,38 +24,38 @@ const menuItems = [
     icon: TransactionIcon,
     activeIcon: TransactionIcon,
     label: "Transactions",
-    href: "/transactions",
+    href: "#",
   },
   {
     icon: AccountIcon,
     activeIcon: AccountIcon,
     label: "Accounts",
-    href: "/accounts",
+    href: "#",
   },
   {
     icon: InvestmentIcon,
     activeIcon: InvestmentIcon,
     label: "Investments",
-    href: "/investments",
+    href: "#",
   },
   {
     icon: CreditCardIcon,
     activeIcon: CreditCardIcon,
     label: "Credit Cards",
-    href: "/credit-cards",
+    href: "#",
   },
   { icon: LoanIcon, activeIcon: LoanIcon, label: "Loans", href: "/loans" },
   {
     icon: ServiceIcon,
     activeIcon: ServiceIcon,
     label: "Services",
-    href: "/services",
+    href: "#",
   },
   {
     icon: PrivilegeIcon,
     activeIcon: PrivilegeIcon,
     label: "My Privileges",
-    href: "/my-privileges",
+    href: "#",
   },
   {
     icon: SettingIcon,
@@ -64,7 +65,7 @@ const menuItems = [
   },
 ];
 
-export function SidebarMenu() {
+export function SidebarMenu({ onItemClick }: { onItemClick?: () => void }) {
   const pathname = usePathname();
 
   return (
@@ -82,7 +83,7 @@ export function SidebarMenu() {
                 : pathname.startsWith(item.href);
 
             return (
-              <li key={item.label}>
+              <li key={item.label} onClick={onItemClick}>
                 <Link href={item.href}>
                   <div className="relative flex font-medium items-center px-6 py-3 text-[18px] hover:bg-gray-50 transition-colors">
                     {isActive && (

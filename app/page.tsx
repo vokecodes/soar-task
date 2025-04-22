@@ -49,7 +49,7 @@ export default function Dashboard() {
 
   const getDashboardData = async () => {
     try {
-      setIsSending(true);
+      setIsLoading(true);
       const res = await fetch("/api/dashboard-data");
       const data = await res.json();
       setDashboardData(data);
@@ -64,7 +64,7 @@ export default function Dashboard() {
 
   const [selectedPerson, setSelectedPerson] = useState<string | null>();
 
-  const [amount, setAmount] = useState<number>(0);
+  const [amount, setAmount] = useState<number>();
   const [isSending, setIsSending] = useState(false);
 
   const handleSendAmount = () => {
@@ -73,6 +73,8 @@ export default function Dashboard() {
       setIsSending(false);
     }, 1000);
   };
+
+  console.log({ isSending });
 
   const handleSelect = (name: string) => {
     setSelectedPerson(name === selectedPerson ? null : name);
@@ -355,7 +357,6 @@ export default function Dashboard() {
               <p className="text-[#718EBF] font-light text-sm lg:text-base">
                 Write Amount
               </p>
-              {/* <div className="hidden lg:block flex-1" /> */}
               <div className="bg-[#EDF1F7] flex items-center rounded-full">
                 <Input
                   type="number"

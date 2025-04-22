@@ -1,4 +1,5 @@
 "use client";
+
 import { usePathname } from "next/navigation";
 import { Search, Menu as MenuIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -6,8 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { SidebarMenu } from "./SidebarMenu";
+import { useState } from "react";
 
 export function TopBar() {
+  const [open, setOpen] = useState(false);
+
   const pathname = usePathname();
   const pageTitle =
     pathname === "/"
@@ -23,7 +27,7 @@ export function TopBar() {
     <header className="border-b py-5 bg-white">
       {/* Mobile TopBar */}
       <div className="flex items-center justify-between px-4 md:hidden">
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" className="mr-2">
               <MenuIcon className="h-5 w-5" />
@@ -31,7 +35,7 @@ export function TopBar() {
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="p-0">
-            <SidebarMenu />
+            <SidebarMenu onItemClick={() => setOpen(false)} />
           </SheetContent>
         </Sheet>
 

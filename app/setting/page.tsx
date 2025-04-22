@@ -49,8 +49,8 @@ export default function Setting() {
   };
 
   return (
-    <div className="p-4 lg:p-10 min-h-screen">
-      <div className="bg-white px-4 lg:px-6 py-3 lg:rounded-3xl rounded-2xl overflow-hidden">
+    <div className="p-4 pb-10 lg:p-10 min-h-screen">
+      <div className="bg-white px-4 lg:px-6 pt-3 pb-5 lg:rounded-3xl rounded-2xl overflow-hidden">
         {/* Tabs */}
         <div className="border-b border-gray-200">
           <nav className="flex justify-between items-center lg:justify-start">
