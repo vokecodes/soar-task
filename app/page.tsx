@@ -50,7 +50,7 @@ export default function Dashboard() {
   const getDashboardData = async () => {
     try {
       setIsSending(true);
-      const res = await fetch("http://localhost:3000/api/dashboard-data");
+      const res = await fetch("/api/dashboard-data");
       const data = await res.json();
       setDashboardData(data);
     } finally {
@@ -71,7 +71,7 @@ export default function Dashboard() {
     setIsSending(true);
     setTimeout(() => {
       setIsSending(false);
-    }, 2000);
+    }, 1000);
   };
 
   const handleSelect = (name: string) => {
